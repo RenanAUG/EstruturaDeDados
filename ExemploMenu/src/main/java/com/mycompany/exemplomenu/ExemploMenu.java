@@ -13,16 +13,33 @@ import javax.swing.JOptionPane;
 public class ExemploMenu {
 
     public static void main(String[] args) {
+        
+        Messages msg = new Messages();
+        
         int opcao = 99;
         while (!(opcao == 0)){
             opcao = Integer.parseInt(JOptionPane.showInputDialog(
-                                        "1 - Cadastro de ALunos\n" + 
-                                        "2 - Cadastro Professores\n" +
-                                        "3 - Cadastro de Disciplinas\n" + 
-                                        "4 - Cadastro de Turmas\n" +
+                                        "1 - Vetor de Inserção\n" + 
+                                        "2 - Vetor de Seleção\n" +
+                                        "3 - Vetor de bolha\n" + 
                                         "0 - Sair"));
+            switch(opcao){
+                case 1:
+                    msg.messageInsercao();
+                    break;
+                case 2:
+                    msg.messageSelecao();
+                    break;
+                case 3:
+                    msg.messageBolha();
+                    break;
+                default:
+                    System.out.println("Saindo...");
+                    System.exit(0);
+                    break;
+            }
         }
     }
 }
-            
+
 
