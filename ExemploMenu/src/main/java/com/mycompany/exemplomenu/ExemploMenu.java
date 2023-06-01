@@ -4,6 +4,7 @@
 
 package com.mycompany.exemplomenu;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,8 +14,9 @@ import javax.swing.JOptionPane;
 public class ExemploMenu {
 
     public static void main(String[] args) {
-        
-        Messages msg = new Messages();
+        ArrayList<Integer> lista = new ArrayList<>();
+        InterfaceGrafica painel = new InterfaceGrafica();
+        int valores;
         
         int opcao = 99;
         while (!(opcao == 0)){
@@ -25,13 +27,24 @@ public class ExemploMenu {
                                         "0 - Sair"));
             switch(opcao){
                 case 1:
-                    msg.messageInsercao();
+                    painel.messager("Você selecionou: vetor de Inserção");
+                    valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista"));
+                    lista = painel.insercao(valores);
+                    String resultado = "";
+                    for(Integer item : lista){
+                        resultado = resultado + item.toString() + ", ";
+                    }
+                    painel.messager("A ordem de inserção foi de: " + resultado);
                     break;
                 case 2:
-                    msg.messageSelecao();
+                    painel.messager("Você selecionou: vetor de Seleção");
+                    valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista"));
+                    painel.inserter(valores);
                     break;
                 case 3:
-                    msg.messageBolha();
+                    painel.messager("Você selecionou: vetor de Bolha");
+                    valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista"));
+                    painel.inserter(valores);
                     break;
                 default:
                     System.out.println("Saindo...");
