@@ -4,7 +4,6 @@
 
 package com.mycompany.exemplomenu;
 
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,7 +13,7 @@ import javax.swing.JOptionPane;
 public class ExemploMenu {
 
     public static void main(String[] args) {
-        ArrayList<Integer> lista = new ArrayList<>();
+        String resultado = "";
         InterfaceGrafica painel = new InterfaceGrafica();
         int valores;
         
@@ -27,27 +26,35 @@ public class ExemploMenu {
                                         "0 - Sair"));
             switch(opcao){
                 case 1:
-                    painel.messager("Você selecionou: vetor de Inserção");
                     valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista"));
-                    lista = painel.insercao(valores);
-                    String resultado = "";
-                    for(Integer item : lista){
+                    int[] vetor = new int[valores];
+                    vetor = painel.insercao(valores);
+                    for(Integer item : vetor){
                         resultado = resultado + item.toString() + ", ";
                     }
-                    painel.messager("A ordem de inserção foi de: " + resultado);
+                    painel.messager("A ordem do vetor inserção foi de: " + resultado);
                     break;
+                    
                 case 2:
-                    painel.messager("Você selecionou: vetor de Seleção");
                     valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista"));
-                    painel.inserter(valores);
                     break;
+                    
                 case 3:
-                    painel.messager("Você selecionou: vetor de Bolha");
                     valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista"));
-                    painel.inserter(valores);
+                    int[] vetorBolha = new int[valores];
+                    vetorBolha = painel.bolha(valores);
+                    for(Integer item : vetorBolha){
+                        resultado = resultado + item.toString() + ", ";
+                    }
+                    painel.messager("A ordem do vetor bolha foi de: " + resultado);                    
                     break;
+                    
                 default:
-                    System.out.println("Saindo...");
+                    if(opcao != 0){
+                      System.out.println("Opção inválida");
+                    }else{
+                     System.out.println("Saindo...");   
+                    }
                     System.exit(0);
                     break;
             }
