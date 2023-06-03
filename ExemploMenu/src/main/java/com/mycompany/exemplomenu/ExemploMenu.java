@@ -8,8 +8,8 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author aluno
- * @author renan
+ * @author Lucas
+ * @author Renan
  */
 public class ExemploMenu {
 
@@ -17,9 +17,6 @@ public class ExemploMenu {
         String resultado = "";
         InterfaceGrafica painel = new InterfaceGrafica();
         int valores;
-        long inicio = System.currentTimeMillis();
-        long fim = System.currentTimeMillis();
-        long tempoExecucao = fim - inicio;
 
         int opcao = 99;
         while (!(opcao == 0)) {
@@ -32,52 +29,34 @@ public class ExemploMenu {
                 case 1:
                     valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista:"));
                     int[] vetor = new int[valores];
-                    inicio = System.currentTimeMillis();
-
                     vetor = painel.insercao(valores);
+                    
                     for (Integer item : vetor) {
                         resultado = resultado + item.toString() + ", ";
                     }
-
-                    fim = System.currentTimeMillis();
-                    tempoExecucao = fim - inicio;
-
-                    painel.messager("A ordem do vetor inserção foi de: " + resultado
-                            + "\n Tempo Execução: " + tempoExecucao + "milissegundos");
+                    painel.mostrarTempoExecucao(resultado);
                     break;
 
                 case 2:
                     valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista:"));
                     int[] vetorSelecao = new int[valores];
-                    inicio = System.currentTimeMillis();
                     vetorSelecao = painel.selecao(valores);
+                    
                     for (Integer item : vetorSelecao) {
                         resultado = resultado + item.toString() + ", ";
                     }
-
-                    fim = System.currentTimeMillis();
-                    tempoExecucao = fim - inicio;
-
-                    painel.messager("A ordem do vetor Seleção foi de: " + resultado
-                            + "\n Tempo Execução: " + tempoExecucao + "milissegundos");
+                    painel.mostrarTempoExecucao(resultado);
                     break;
 
                 case 3:
                     valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista:"));
                     int[] vetorBolha = new int[valores];
 
-                    inicio = System.currentTimeMillis();
-
                     vetorBolha = painel.bolha(valores);
                     for (Integer item : vetorBolha) {
                         resultado = resultado + item.toString() + ", ";
                     }
-
-                    fim = System.currentTimeMillis();
-                    tempoExecucao = fim - inicio;
-
-                    painel.messager("A ordem do vetor bolha foi de: " + resultado
-                            + "\n Tempo Exeucação: " + tempoExecucao + "milissegundos");
+                    painel.mostrarTempoExecucao(resultado);
                     break;
 
                 default:
