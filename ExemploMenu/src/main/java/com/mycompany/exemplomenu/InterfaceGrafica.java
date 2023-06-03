@@ -7,6 +7,9 @@ import javax.swing.JOptionPane;
  * @author lucas
  */
 public class InterfaceGrafica {
+    long inicio = System.currentTimeMillis();
+    long fim = System.currentTimeMillis();
+    long tempoExecucao = fim - inicio;
 
     public void messager(String msg) {
         JOptionPane.showMessageDialog(null, msg);
@@ -19,6 +22,14 @@ public class InterfaceGrafica {
 //        }
 //        return vetorOrg;
 //    }
+    
+    public void mostrarTempoExecucao(String ordem){
+        fim = System.currentTimeMillis();
+        tempoExecucao = fim - inicio;
+        messager("A ordem do vetor inserção foi de: " + ordem
+        + "\n Tempo Execução: " + tempoExecucao + "milissegundos");
+    }
+    
     public void mostrarVetorOriginal(int valor, int[] vet) {
         String original = "";
         for (int i = 0; i < valor; i++) {
