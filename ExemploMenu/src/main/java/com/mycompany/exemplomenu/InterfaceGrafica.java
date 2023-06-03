@@ -5,8 +5,10 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author lucas
+ * @author renan
  */
 public class InterfaceGrafica {
+
     long inicio = System.currentTimeMillis();
     long fim = System.currentTimeMillis();
     long tempoExecucao = fim - inicio;
@@ -22,20 +24,76 @@ public class InterfaceGrafica {
 //        }
 //        return vetorOrg;
 //    }
-    
-    public void mostrarTempoExecucao(String ordem){
+    public void mostrarTempoExecucao(String ordem) {
         fim = System.currentTimeMillis();
         tempoExecucao = fim - inicio;
         messager("A ordem do vetor inserção foi de: " + ordem
-        + "\n Tempo Execução: " + tempoExecucao + "milissegundos");
+                + "\n Tempo Execução: " + tempoExecucao + "milissegundos");
     }
-    
+
     public void mostrarVetorOriginal(int valor, int[] vet) {
         String original = "";
         for (int i = 0; i < valor; i++) {
             original = original + vet[i] + ", ";
         }
         messager("Seu vetor original é: " + original);
+    }
+
+    public String pedirPesquisa() {
+        String resposta = JOptionPane.showInputDialog("Você deseja efetuar uma pesquisa? (y/n)");
+        if (resposta.equalsIgnoreCase("y")) {
+            int respostaPesquisa = Integer.parseInt(JOptionPane.showInputDialog("Qual pesquisa você deseja efetuar?\n[1] - Linear\n[2] - Binaria"));
+            if (respostaPesquisa == 1) {
+                return "linear";
+            } else if (respostaPesquisa == 2) {
+                return "binaria";
+            }
+        }
+        return null;
+    }
+
+    public void mostraPesquisa(String pesquisa, int[] vetor) {
+        if (pesquisa.equals("binaria")) {
+            int chave = Integer.parseInt(JOptionPane.showInputDialog("Informe o número a ser pesquisado"));
+            int posicao = pesquisas(chave, vetor, "binaria");
+            if (posicao >= 0) {
+                messager("O Elemento " + chave + " está localizado na " + "posição: " + posicao);
+            } else {
+                messager("O Elemento " + chave + " não foi localizado na lista");
+            }
+        } else if (pesquisa.equals("linear")) {
+            int chave = Integer.parseInt(JOptionPane.showInputDialog("Informe o número a ser pesquisado"));
+            int posicao = pesquisas(chave, vetor, "linear");
+            if (posicao >= 0) {
+                messager("O Elemento " + chave + " está localizado na " + "posição: " + posicao);
+            } else {
+                messager("O Elemento " + chave + " não foi localizado na lista");
+            }
+        }
+    }
+
+    public int pesquisas(int chave, int[] vet, String tipo) {
+        if (tipo.equalsIgnoreCase("binaria")) {
+            int esquerda, meio, direita;
+            esquerda = 0;
+            direita = vet.length - 1;
+            while (esquerda <= direita) {
+                meio = (esquerda + direita) / 2;
+                if (chave == vet[meio]) {
+                    return meio;
+                }
+                if (chave > vet[meio]) {
+                    esquerda = meio + 1;
+                } else {
+                    direita = meio - 1;
+                }
+            }
+        } else if (tipo.equalsIgnoreCase("linear")) {
+            //Linear aqui
+        } else {
+            System.out.println("Tipo de pesquisa não encontrado");
+        }
+        return -1;
     }
 
     public int[] insercao(int valor) {
