@@ -1,20 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package com.mycompany.exemplomenu;
 
 import javax.swing.JOptionPane;
 
 /**
  *
- * @author Lucas
- * @author Renan
+ * @author lucas
+ * @author renan
  */
 public class ExemploMenu {
 
     public static void main(String[] args) {
         String resultado = "";
+        String pesquisa = "";
         InterfaceGrafica painel = new InterfaceGrafica();
         int valores;
 
@@ -31,6 +28,9 @@ public class ExemploMenu {
                     int[] vetor = new int[valores];
                     vetor = painel.insercao(valores);
                     
+                    pesquisa = painel.pedirPesquisa();
+                    painel.mostraPesquisa(pesquisa, vetor);
+                    
                     for (Integer item : vetor) {
                         resultado = resultado + item.toString() + ", ";
                     }
@@ -42,6 +42,9 @@ public class ExemploMenu {
                     int[] vetorSelecao = new int[valores];
                     vetorSelecao = painel.selecao(valores);
                     
+                    pesquisa = painel.pedirPesquisa();
+                    painel.mostraPesquisa(pesquisa, vetorSelecao);
+                    
                     for (Integer item : vetorSelecao) {
                         resultado = resultado + item.toString() + ", ";
                     }
@@ -51,7 +54,10 @@ public class ExemploMenu {
                 case 3:
                     valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista:"));
                     int[] vetorBolha = new int[valores];
-
+                    
+                    pesquisa = painel.pedirPesquisa();
+                    painel.mostraPesquisa(pesquisa, vetorBolha);
+                    
                     vetorBolha = painel.bolha(valores);
                     for (Integer item : vetorBolha) {
                         resultado = resultado + item.toString() + ", ";
@@ -71,6 +77,3 @@ public class ExemploMenu {
         }
     }
 }
-
-
-
