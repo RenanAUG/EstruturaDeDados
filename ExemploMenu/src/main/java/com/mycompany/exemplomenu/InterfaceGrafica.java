@@ -17,18 +17,11 @@ public class InterfaceGrafica {
         JOptionPane.showMessageDialog(null, msg);
     }
 
-//    public int[] vetorOriginal(ArrayList<Integer> lista ){
-//        int[] vetorOrg = new int[lista.size()];
-//        for(int i =0; i<lista.size();i++){
-//            vetorOrg[i] = lista.get(i);
-//        }
-//        return vetorOrg;
-//    }
     public void mostrarTempoExecucao(String ordem) {
         fim = System.currentTimeMillis();
         tempoExecucao = fim - inicio;
         messager("A ordem do vetor inserção foi de: " + ordem
-                + "\n Tempo Execução: " + tempoExecucao + "milissegundos");
+                + "\n Tempo Execução: " + tempoExecucao + " milissegundos");
     }
 
     public void mostrarVetorOriginal(int valor, int[] vet) {
@@ -74,9 +67,11 @@ public class InterfaceGrafica {
 
     public int pesquisas(int chave, int[] vet, String tipo) {
         if (tipo.equalsIgnoreCase("binaria")) {
+
             int esquerda, meio, direita;
             esquerda = 0;
             direita = vet.length - 1;
+
             while (esquerda <= direita) {
                 meio = (esquerda + direita) / 2;
                 if (chave == vet[meio]) {
@@ -89,7 +84,14 @@ public class InterfaceGrafica {
                 }
             }
         } else if (tipo.equalsIgnoreCase("linear")) {
-            //Linear aqui
+
+            for (int i = 0; i < vet.length; i++) {
+                if (chave == vet[i]) {
+                    return i;
+                }
+            }
+            return -1;
+
         } else {
             System.out.println("Tipo de pesquisa não encontrado");
         }
@@ -97,6 +99,7 @@ public class InterfaceGrafica {
     }
 
     public int[] insercao(int valor) {
+
         int[] vetor = new int[valor];
         for (int i = 0; i < valor; i++) {
             int numero = Integer.parseInt(JOptionPane.showInputDialog("Informe o número da fila: [" + (i + 1) + "]"));
@@ -116,6 +119,7 @@ public class InterfaceGrafica {
     }
 
     public int[] selecao(int valor) {
+
         int[] vetor = new int[valor];
         for (int i = 0; i < valor; i++) {
             int numero = Integer.parseInt(JOptionPane.showInputDialog("Informe o número da fila: [" + (i + 1) + "]"));
@@ -143,6 +147,7 @@ public class InterfaceGrafica {
     }
 
     public int[] bolha(int valor) {
+
         int[] vetor = new int[valor];
         for (int i = 0; i < valor; i++) {
             int numero = Integer.parseInt(JOptionPane.showInputDialog("Informe o número da fila: [" + (i + 1) + "]"));
