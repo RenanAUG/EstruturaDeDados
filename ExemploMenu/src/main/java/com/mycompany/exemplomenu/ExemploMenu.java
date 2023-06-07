@@ -34,26 +34,25 @@ public class ExemploMenu {
                     for (Integer item : vetor) {
                         resultado = resultado + item.toString() + ", ";
                     }
-                    painel.mostrarTempoExecucao(resultado);
                     break;
 
                 case 2:
                     valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista:"));
                     int[] vetorSelecao = new int[valores];
                     vetorSelecao = painel.selecao(valores);
-                    
+
                     pesquisa = painel.pedirPesquisa();
                     painel.mostraPesquisa(pesquisa, vetorSelecao);
                     
                     for (Integer item : vetorSelecao) {
                         resultado = resultado + item.toString() + ", ";
                     }
-                    painel.mostrarTempoExecucao(resultado);
                     break;
 
                 case 3:
                     valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista:"));
                     int[] vetorBolha = new int[valores];
+                    vetorBolha = painel.selecao(valores);
                     
                     pesquisa = painel.pedirPesquisa();
                     painel.mostraPesquisa(pesquisa, vetorBolha);
@@ -62,7 +61,6 @@ public class ExemploMenu {
                     for (Integer item : vetorBolha) {
                         resultado = resultado + item.toString() + ", ";
                     }
-                    painel.mostrarTempoExecucao(resultado);
                     break;
 
                 default:
