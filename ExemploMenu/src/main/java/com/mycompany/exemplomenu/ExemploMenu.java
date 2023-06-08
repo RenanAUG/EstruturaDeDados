@@ -27,13 +27,13 @@ public class ExemploMenu {
                     valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista:"));
                     int[] vetor = new int[valores];
                     vetor = painel.insercao(valores);
+                    for (Integer item : vetor) {
+                        resultado = resultado + item.toString() + "\n";
+                    }
+                    painel.messager("o vetor odenado é:\n"+resultado);
                     
                     pesquisa = painel.pedirPesquisa();
                     painel.mostraPesquisa(pesquisa, vetor);
-                    
-                    for (Integer item : vetor) {
-                        resultado = resultado + item.toString() + ", ";
-                    }
                     break;
 
                 case 2:
@@ -41,12 +41,14 @@ public class ExemploMenu {
                     int[] vetorSelecao = new int[valores];
                     vetorSelecao = painel.selecao(valores);
 
+                    for (Integer item : vetorSelecao) {
+                        resultado = resultado + item.toString() + "\n";
+                    }
+                    painel.messager("o vetor odenado é:\n"+resultado);
+                    
                     pesquisa = painel.pedirPesquisa();
                     painel.mostraPesquisa(pesquisa, vetorSelecao);
                     
-                    for (Integer item : vetorSelecao) {
-                        resultado = resultado + item.toString() + ", ";
-                    }
                     break;
 
                 case 3:
@@ -54,13 +56,13 @@ public class ExemploMenu {
                     int[] vetorBolha = new int[valores];
                     vetorBolha = painel.selecao(valores);
                     
+                    for (Integer item : vetorBolha) {
+                        resultado = resultado + item.toString() + "\n";
+                    }
+                    painel.messager("o vetor odenado é:\n"+resultado);
+                    
                     pesquisa = painel.pedirPesquisa();
                     painel.mostraPesquisa(pesquisa, vetorBolha);
-                    
-                    vetorBolha = painel.bolha(valores);
-                    for (Integer item : vetorBolha) {
-                        resultado = resultado + item.toString() + ", ";
-                    }
                     break;
 
                 default:
