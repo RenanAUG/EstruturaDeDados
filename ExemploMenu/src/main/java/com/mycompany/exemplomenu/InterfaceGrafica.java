@@ -1,5 +1,6 @@
 package com.mycompany.exemplomenu;
 
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,11 +27,11 @@ public class InterfaceGrafica {
         messager("Seu vetor original é: " + original);
     }
     
-     public void mostrarTempoExecucao(String tipo, String ordem) {
+     public void mostrarTempoExecucao(int[] ordem) {
         fim = System.currentTimeMillis();
         tempoExecucao = fim - inicio;
-        messager("A ordem do vetor de "+ tipo +" foi de: \n" + ordem
-        + "\nTempo Execução: " + tempoExecucao + "milissegundos");
+        messager("A ordem do vetor foi de: \n" + Arrays.toString(ordem)
+        + "\nTempo Execução: " + tempoExecucao + " milissegundos");
     }
 
     public String pedirPesquisa() {
@@ -118,6 +119,8 @@ public class InterfaceGrafica {
             vetor[j + 1] = chave;
         }
         
+        mostrarTempoExecucao(vetor);
+        
         return vetor;
     }
 
@@ -146,6 +149,8 @@ public class InterfaceGrafica {
             }
         }
         
+        mostrarTempoExecucao(vetor);
+        
         return vetor;
     }
 
@@ -167,6 +172,8 @@ public class InterfaceGrafica {
                 }
             }
         }
+        
+        mostrarTempoExecucao(vetor);
         
         return vetor;
     }
