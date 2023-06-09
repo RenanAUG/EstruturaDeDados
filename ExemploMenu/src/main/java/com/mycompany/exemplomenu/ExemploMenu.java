@@ -12,7 +12,6 @@ public class ExemploMenu {
     public static void main(String[] args) {
         String resultado = "";
         String pesquisa = "";
-        String tipo = "";
         InterfaceGrafica painel = new InterfaceGrafica();
         int valores;
 
@@ -26,30 +25,24 @@ public class ExemploMenu {
             switch (opcao) {
                 case 1:
                     valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista:"));
-                    tipo = "Inserção";
                     int[] vetor = new int[valores];
                     vetor = painel.insercao(valores);
                     for (Integer item : vetor) {
                         resultado = resultado + item.toString() + "\n";
                     }
                     
-                    painel.mostrarTempoExecucao(tipo, resultado);
-                    
                     pesquisa = painel.pedirPesquisa();
                     painel.mostraPesquisa(pesquisa, vetor);
                     break;
 
                 case 2:
-                    valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista:"));        
-                    tipo = "Seleção";
+                    valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista:"));
                     int[] vetorSelecao = new int[valores];
                     vetorSelecao = painel.selecao(valores);
 
                     for (Integer item : vetorSelecao) {
                         resultado = resultado + item.toString() + "\n";
                     }
-                    
-                    painel.mostrarTempoExecucao(tipo,resultado);
                     
                     pesquisa = painel.pedirPesquisa();
                     painel.mostraPesquisa(pesquisa, vetorSelecao);
@@ -58,15 +51,12 @@ public class ExemploMenu {
 
                 case 3:
                     valores = Integer.parseInt(JOptionPane.showInputDialog("Informe quantos valores serão adicionados na lista:"));
-                    tipo = "Bolha";
                     int[] vetorBolha = new int[valores];
                     vetorBolha = painel.selecao(valores);
                     
                     for (Integer item : vetorBolha) {
                         resultado = resultado + item.toString() + "\n";
                     }
-                                                            
-                    painel.mostrarTempoExecucao(tipo, resultado);
                     
                     pesquisa = painel.pedirPesquisa();
                     painel.mostraPesquisa(pesquisa, vetorBolha);
