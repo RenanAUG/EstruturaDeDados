@@ -10,6 +10,10 @@ import javax.swing.JOptionPane;
 
 public class InterfaceGrafica {
     
+    long inicio = System.currentTimeMillis();
+    long fim = System.currentTimeMillis();
+    long tempoExecucao = fim - inicio;
+    
     public void messager(String msg) {
         JOptionPane.showMessageDialog(null, msg);
     }
@@ -20,6 +24,13 @@ public class InterfaceGrafica {
             original = original + vet[i] + ", ";
         }
         messager("Seu vetor original é: " + original);
+    }
+    
+     public void mostrarTempoExecucao(String tipo, String ordem) {
+        fim = System.currentTimeMillis();
+        tempoExecucao = fim - inicio;
+        messager("A ordem do vetor de "+ tipo +" foi de: \n" + ordem
+        + "\nTempo Execução: " + tempoExecucao + "milissegundos");
     }
 
     public String pedirPesquisa() {
@@ -96,7 +107,7 @@ public class InterfaceGrafica {
             vetor[i] = numero;
         }
         mostrarVetorOriginal(valor, vetor);
-        long inicio = System.nanoTime();
+
         for (int i = 1; i < valor; i++) {
             int chave = vetor[i];
             int j = i - 1;
@@ -106,8 +117,7 @@ public class InterfaceGrafica {
             }
             vetor[j + 1] = chave;
         }
-        long fim = System.nanoTime() - inicio;
-        messager("O tempo de execução foi: " + (fim/100) + " milisegundos");
+        
         return vetor;
     }
 
@@ -120,7 +130,6 @@ public class InterfaceGrafica {
         }
 
         mostrarVetorOriginal(valor, vetor);
-        long inicio = System.nanoTime();
         for (int i = 0; i < valor - 1; i++) {
             int posicao = i;
 
@@ -136,8 +145,7 @@ public class InterfaceGrafica {
                 vetor[posicao] = aux;
             }
         }
-        long fim = System.nanoTime() - inicio;
-        messager("O tempo de execução foi: " + (fim/100) + " milisegundos");
+        
         return vetor;
     }
 
@@ -149,7 +157,7 @@ public class InterfaceGrafica {
             vetor[i] = numero;
         }
         mostrarVetorOriginal(valor, vetor);
-        long inicio = System.nanoTime();
+
         for (int i = 0; i < valor - 1; i++) {
             for (int j = 0; j < valor - 1 - i; j++) {
                 if (vetor[j] > vetor[j + 1]) {
@@ -159,8 +167,7 @@ public class InterfaceGrafica {
                 }
             }
         }
-        long fim = System.nanoTime() - inicio;
-        messager("O tempo de execução foi: " + (fim/100) + " milisegundos");
+        
         return vetor;
     }
 }
